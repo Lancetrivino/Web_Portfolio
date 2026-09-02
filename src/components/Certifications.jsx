@@ -59,6 +59,33 @@ const certs = [
     image: '/cert_hello_world.jpg',
     verify: null,
   },
+   {
+    title: 'Hello World to the Real World: A Tech Industry Survival Guide',
+    issuer: 'De La Salle Lipa',
+    type: 'Seminar',
+    color: 'cyan',
+    year: '2026',
+    image: '/cert_hello_world.jpg',
+    verify: null,
+  },
+  {
+  title: 'Masterclass 101',
+  issuer: 'JPCS - DLSL Chapter',
+  type: 'Masterclass',
+  color: 'purple',
+  year: '2025',
+  image: '/cert_masterclass_101.jpg',
+  verify: null,
+},
+{
+  title: 'Explore Your Electives 2025 (E.Y.E.) for CS and EMC',
+  issuer: 'JPCS - DLSL Chapter',
+  type: 'Seminar',
+  color: 'blue',
+  year: '2025',
+  image: '/cert_eye_2025.jpg',
+  verify: null,
+},
 ]
 
 export default function Certifications() {
