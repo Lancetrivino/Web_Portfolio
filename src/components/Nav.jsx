@@ -19,6 +19,11 @@ export default function Nav() {
     setOpen(false)
   }
 
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setOpen(false)
+  }
+
   // Highlight the nav link for whichever section is currently in view.
   useEffect(() => {
     const sections = links
@@ -41,9 +46,9 @@ export default function Nav() {
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>
-        <img src="/ALT_Logo.png" alt="ALT Logo" className={styles.logoImg} />
-      </div>
+      <button className={styles.logo} onClick={scrollTop} aria-label="Back to top">
+        <img src="/logo.svg" alt="ALT logo" className={styles.logoImg} />
+      </button>
 
       <ul className={styles.links}>
         {links.map((link) => (

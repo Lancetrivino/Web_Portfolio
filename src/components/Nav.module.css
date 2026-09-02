@@ -12,15 +12,27 @@
   height: 60px;
 }
 
+/* Logo button — scrolls back to top */
 .logo {
-  font-family: var(--mono);
-  font-size: 15px;
-  color: var(--accent);
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
-.comment {
-  color: var(--text3);
+.logoImg {
+  height: 32px;
+  width: auto;
+  display: block;
+  opacity: 0.9;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.logo:hover .logoImg {
+  opacity: 1;
+  transform: scale(1.04);
 }
 
 .links {
@@ -51,21 +63,6 @@
   color: var(--accent);
 }
 
-.logoImg {
-  height: 170px;
-  width: auto;
-  display: block;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
-  transition: opacity 0.2s;
-  margin-left: -40px;
-  margin-top: 10px;
-}
-
-.logoImg:hover {
-  opacity: 1;
-}
-
 /* ---- Mobile hamburger button ---- */
 .menuBtn {
   display: none;
@@ -90,17 +87,9 @@
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.bar1open {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.bar2open {
-  opacity: 0;
-}
-
-.bar3open {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.bar1open { transform: translateY(7px) rotate(45deg); }
+.bar2open { opacity: 0; }
+.bar3open { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---- Mobile dropdown panel ---- */
 .mobileMenu {
@@ -141,40 +130,19 @@
   transition: color 0.2s;
 }
 
-.mobileLink:last-child {
-  border-bottom: none;
-}
-
-.mobileLink:hover {
-  color: var(--accent);
-}
+.mobileLink:last-child { border-bottom: none; }
+.mobileLink:hover { color: var(--accent); }
 
 @media (max-width: 640px) {
-  .nav {
-    padding: 0 1.25rem;
-  }
-
-  .links {
-    display: none;
-  }
-
-  .menuBtn {
-    display: flex;
-  }
-
-  .mobileMenu {
-    display: flex;
-  }
-
-  .logoImg {
-    height: 120px;
-    margin-left: -24px;
-  }
+  .nav { padding: 0 1.25rem; }
+  .links { display: none; }
+  .menuBtn { display: flex; }
+  .mobileMenu { display: flex; }
+  .logoImg { height: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bar,
-  .mobileMenu {
-    transition: none;
-  }
+  .mobileMenu,
+  .logoImg { transition: none; }
 }
