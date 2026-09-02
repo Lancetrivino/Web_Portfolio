@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './Section.module.css'
 import cert from './Certifications.module.css'
 
-// featured: true  -> verifiable online courses, shown as full image cards
-// everything else -> seminars / participation, shown as a compact list below
+// featured: true  -> verifiable online courses, shown as large image cards
+// everything else -> seminars / participation, shown as smaller image cards below
 const certs = [
   {
     title: 'Introduction to Data Science Using R Programming',
@@ -120,28 +120,30 @@ export default function Certifications() {
         ))}
       </div>
 
-      {/* Others: seminars & participation, compact list */}
+      {/* Others: seminars & participation, smaller image cards */}
       <div className={cert.subhead}>Seminars &amp; participation</div>
-      <ul className={cert.list}>
+      <div className={cert.gridSmall}>
         {others.map(c => (
-          <li key={c.title} className={cert.row}>
+          <div key={c.title} className={`${cert.card} ${cert.cardSmall}`}>
             <a
               href={c.image}
-              className={cert.rowLink}
+              className={cert.imageLink}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${c.title} certificate`}
             >
-              <span className={`${cert.badge} ${cert[c.color]}`}>{c.type}</span>
-              <span className={cert.rowText}>
-                <span className={cert.rowTitle}>{c.title}</span>
-                <span className={cert.meta}>{c.issuer} · {c.year}</span>
-              </span>
-              <i className={`ti ti-external-link ${cert.rowIcon}`} aria-hidden="true" />
+              <div className={cert.imageWrap}>
+                <img src={c.image} alt={`${c.title} certificate`} className={cert.image} loading="lazy" decoding="async" />
+              </div>
             </a>
-          </li>
+            <div className={cert.bodySmall}>
+              <span className={`${cert.badge} ${cert[c.color]}`}>{c.type}</span>
+              <h3 className={cert.cardTitleSmall}>{c.title}</h3>
+              <div className={cert.meta}>{c.issuer} · {c.year}</div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   )
 }
