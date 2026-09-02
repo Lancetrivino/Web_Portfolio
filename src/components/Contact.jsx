@@ -5,7 +5,7 @@ import contact from './Contact.module.css'
 const socials = [
   { icon: 'ti-brand-github', label: 'GitHub', href: 'https://github.com/Lancetrivino' },
   { icon: 'ti-brand-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/andrei-lance-trivino-22466b389/' },
-  { icon: 'ti-file-cv', label: 'Resume', href: '/resume.pdf' },
+  { icon: 'ti-file-cv', label: 'Resume', href: '/Trivino_Resume.pdf' },
 ]
 
 // Get a free access key at https://web3forms.com — paste it below.
