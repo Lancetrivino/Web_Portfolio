@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './Section.module.css'
 import cert from './Certifications.module.css'
 
-// Order matches the resume: course completions first, then seminars / participation.
-// Drop your hosted images into /public with the filenames below.
+// featured: true  -> verifiable online courses, shown as full image cards
+// everything else -> seminars / participation, shown as a compact list below
 const certs = [
   {
     title: 'Introduction to Data Science Using R Programming',
@@ -13,6 +13,7 @@ const certs = [
     year: '2026',
     image: '/cert_datascience_r.jpg',
     verify: 'https://www.eduonix.com/certificate/33d1298917',
+    featured: true,
   },
   {
     title: 'Learning R Through an Example',
@@ -22,6 +23,7 @@ const certs = [
     year: '2026',
     image: '/cert_learning_r.jpg',
     verify: 'https://www.eduonix.com/certificate/643cf5714b',
+    featured: true,
   },
   {
     title: "CaLaBaRZon Young Innovators' Challenge",
@@ -59,43 +61,39 @@ const certs = [
     image: '/cert_hello_world.jpg',
     verify: null,
   },
-   {
-    title: 'Hello World to the Real World: A Tech Industry Survival Guide',
-    issuer: 'De La Salle Lipa',
-    type: 'Seminar',
-    color: 'cyan',
-    year: '2026',
-    image: '/cert_hello_world.jpg',
+  {
+    title: 'Masterclass 101',
+    issuer: 'JPCS - DLSL Chapter',
+    type: 'Masterclass',
+    color: 'purple',
+    year: '2025',
+    image: '/cert_masterclass_101.jpg',
     verify: null,
   },
   {
-  title: 'Masterclass 101',
-  issuer: 'JPCS - DLSL Chapter',
-  type: 'Masterclass',
-  color: 'purple',
-  year: '2025',
-  image: '/cert_masterclass_101.jpg',
-  verify: null,
-},
-{
-  title: 'Explore Your Electives 2025 (E.Y.E.) for CS and EMC',
-  issuer: 'JPCS - DLSL Chapter',
-  type: 'Seminar',
-  color: 'blue',
-  year: '2025',
-  image: '/cert_eye_2025.jpg',
-  verify: null,
-},
+    title: 'Explore Your Electives 2025 (E.Y.E.) for CS and EMC',
+    issuer: 'JPCS - DLSL Chapter',
+    type: 'Seminar',
+    color: 'blue',
+    year: '2025',
+    image: '/cert_eye_2025.jpg',
+    verify: null,
+  },
 ]
 
 export default function Certifications() {
+  const featured = certs.filter(c => c.featured)
+  const others = certs.filter(c => !c.featured)
+
   return (
     <section id="certifications" className={styles.section}>
       <div className={styles.label}>04 — Certifications</div>
       <h2 className={styles.title}>Certifications &amp; seminars</h2>
       <div className={styles.line} />
+
+      {/* Featured: verifiable online courses */}
       <div className={cert.grid}>
-        {certs.map(c => (
+        {featured.map(c => (
           <div key={c.title} className={cert.card}>
             <a
               href={c.image}
@@ -121,6 +119,29 @@ export default function Certifications() {
           </div>
         ))}
       </div>
+
+      {/* Others: seminars & participation, compact list */}
+      <div className={cert.subhead}>Seminars &amp; participation</div>
+      <ul className={cert.list}>
+        {others.map(c => (
+          <li key={c.title} className={cert.row}>
+            <a
+              href={c.image}
+              className={cert.rowLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${c.title} certificate`}
+            >
+              <span className={`${cert.badge} ${cert[c.color]}`}>{c.type}</span>
+              <span className={cert.rowText}>
+                <span className={cert.rowTitle}>{c.title}</span>
+                <span className={cert.meta}>{c.issuer} · {c.year}</span>
+              </span>
+              <i className={`ti ti-external-link ${cert.rowIcon}`} aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
