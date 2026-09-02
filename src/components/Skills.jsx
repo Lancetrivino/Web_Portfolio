@@ -3,7 +3,7 @@ import styles from './Section.module.css'
 import skills from './Skills.module.css'
 
 const groups = [
-  { title: 'Languages', color: 'indigo', tags: ['JavaScript', 'HTML5', 'CSS3', 'TypeScript'] },
+  { title: 'Languages', color: 'indigo', tags: ['JavaScript', 'HTML5', 'CSS', 'TypeScript'] },
   { title: 'Frameworks & Libraries', color: 'cyan', tags: ['React', 'React Native', 'Tailwind CSS', 'Expo'] },
   { title: 'Tools', color: 'violet', tags: ['Git', 'GitHub', 'Vite', 'Figma', 'VS Code'] },
   { title: 'Backend & Services', color: 'green', tags: ['SUPABASE', 'REST APIs', 'Vercel', 'Node.js'] },
