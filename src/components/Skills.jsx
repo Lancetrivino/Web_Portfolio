@@ -6,7 +6,7 @@ const groups = [
   { title: 'Languages', color: 'indigo', tags: ['JavaScript', 'HTML5', 'CSS3', 'TypeScript'] },
   { title: 'Frameworks & Libraries', color: 'cyan', tags: ['React', 'React Native', 'Tailwind CSS', 'Expo'] },
   { title: 'Tools', color: 'violet', tags: ['Git', 'GitHub', 'Vite', 'Figma', 'VS Code'] },
-  { title: 'Backend & Services', color: 'green', tags: ['Firebase', 'REST APIs', 'Vercel', 'Node.js'] },
+  { title: 'Backend & Services', color: 'green', tags: ['SUPABASE', 'REST APIs', 'Vercel', 'Node.js'] },
 ]
 
 export default function Skills() {
