@@ -26,7 +26,7 @@ export default function App() {
       <footer className={styles.footer}>
         <span>Built with </span>
         <span className={styles.heart}>♥</span>
-        <span> by Andrei Lance Triviño — 2025</span>
+        <span> by Andrei Lance Triviño — {new Date().getFullYear()}</span>
       </footer>
     </div>
   )

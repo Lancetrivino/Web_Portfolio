@@ -6,7 +6,7 @@ const stats = [
   { number: '3+', label: 'Years coding' },
   { number: '5+', label: 'Projects shipped' },
   { number: '10+', label: 'Technologies used' },
-  { number: '80%', label: 'Passion for code' },
+  { number: '8', label: 'Certificates earned' },
 ]
 
 export default function About() {
@@ -40,4 +40,4 @@ export default function About() {
       </div>
     </section>
   )
-}
+} 

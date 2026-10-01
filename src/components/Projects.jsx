@@ -6,7 +6,7 @@ const projects = [
   {
     featured: true,
     title: 'Alagad Carwash Inventory',
-    image: '/carwash_inventory.png',
+    image: '/carwash_inventory.webp',
     desc: 'A full-featured inventory management system for Alagad Carwash & Auto Detailing. Includes authentication, product tracking, and business operations management.',
     stack: ['React', 'Firebase', 'Tailwind CSS'],
     live: 'https://alagad-carwash-inventory.vercel.app/',
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     title: 'StudySpot',
-    image: '/Study_Spot.png',
+    image: '/Study_Spot.webp',
     desc: 'Discover the perfect spot to work, study, or collaborate. StudySpot helps students and professionals find and explore study spaces tailored to their needs.',
     stack: ['React', 'JavaScript', 'CSS'],
     live: 'https://midterm-project-webdev.vercel.app/',
@@ -22,7 +22,7 @@ const projects = [
   },
   {
     title: 'Eventure',
-    image: '/Eventure.png',
+    image: '/Eventure.webp',
     desc: 'The ultimate platform for community organizers and attendees. Plan, promote, and attend any event — from car meets and food festivals to workshops and local gatherings.',
     stack: ['React', 'JavaScript', 'CSS'],
     live: 'https://webdev-finals.vercel.app/',
@@ -30,7 +30,7 @@ const projects = [
   },
   {
     title: 'Job Finder App',
-    image: '/Job_finder.png',
+    image: '/Job_finder.webp',
     desc: 'A cross-platform mobile application built with React Native, showcasing mobile UI development skills for both Android and iOS platforms.',
     stack: ['React Native', 'JavaScript', 'Expo'],
     live: null,
@@ -49,7 +49,7 @@ export default function Projects() {
           <div key={p.title} className={`${proj.card} ${p.featured ? proj.featured : ''}`}>
             {p.image && (
               <div className={proj.imageWrap}>
-                <img src={p.image} alt={`${p.title} screenshot`} className={proj.image} />
+                <img src={p.image} alt={`${p.title} screenshot`} className={proj.image} loading="lazy" decoding="async" width="1400" height="700" />
               </div>
             )}
             <div className={proj.cardContent}>

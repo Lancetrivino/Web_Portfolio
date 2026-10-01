@@ -34,7 +34,12 @@
   padding: 4px 10px;
   border-radius: 6px;
   border: 1px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
+
+.tag i { font-size: 15px; }
 
 .indigo { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.3); color: #a5b4fc; }
 .violet { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: #c4b5fd; }

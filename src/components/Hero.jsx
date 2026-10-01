@@ -28,6 +28,20 @@ export default function Hero() {
           <button className={styles.btnSecondary} onClick={() => scrollTo('contact')}>
             <i className="ti ti-send" aria-hidden="true" /> Get in touch
           </button>
+          <a className={styles.btnSecondary} href="/Trivino_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <i className="ti ti-file-cv" aria-hidden="true" /> Resume
+          </a>
+        </div>
+        <div className={styles.socials}>
+          <a href="https://github.com/Lancetrivino" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i className="ti ti-brand-github" aria-hidden="true" />
+          </a>
+          <a href="https://www.linkedin.com/in/andrei-lance-trivino-22466b389/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i className="ti ti-brand-linkedin" aria-hidden="true" />
+          </a>
+          <a href="mailto:lancetrivino30@gmail.com" aria-label="Email">
+            <i className="ti ti-mail" aria-hidden="true" />
+          </a>
         </div>
         <div className={styles.scroll}>
           <div className={styles.scrollLine} />

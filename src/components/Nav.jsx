@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Nav.module.css'
 
 const links = [
@@ -13,6 +13,8 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+  const [showTop, setShowTop] = useState(false)
+  const progressRef = useRef(null)
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -23,6 +25,27 @@ export default function Nav() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setOpen(false)
   }
+
+  // Scroll progress bar + back-to-top visibility.
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const pct = max > 0 ? window.scrollY / max : 0
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${pct})`
+      setShowTop(window.scrollY > window.innerHeight * 0.8)
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
 
   // Highlight the nav link for whichever section is currently in view.
   useEffect(() => {
@@ -45,7 +68,9 @@ export default function Nav() {
   }, [])
 
   return (
+    <>
     <nav className={styles.nav}>
+      <div ref={progressRef} className={styles.progress} aria-hidden="true" />
       <button className={styles.logo} onClick={scrollTop} aria-label="Back to top">
         <img src="/logo.svg" alt="ALT logo" className={styles.logoImg} />
       </button>
@@ -86,5 +111,15 @@ export default function Nav() {
         ))}
       </div>
     </nav>
+
+    <button
+      className={`${styles.toTop} ${showTop ? styles.toTopVisible : ''}`}
+      onClick={scrollTop}
+      aria-label="Back to top"
+      tabIndex={showTop ? 0 : -1}
+    >
+      <i className="ti ti-arrow-up" aria-hidden="true" />
+    </button>
+    </>
   )
 }

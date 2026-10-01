@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styles from './Section.module.css'
 import cert from './Certifications.module.css'
+import Lightbox from './Lightbox'
 
 // featured: true  -> verifiable online courses, shown as large image cards
 // everything else -> seminars / participation, shown as smaller image cards below
@@ -11,7 +12,7 @@ const certs = [
     type: 'Online course',
     color: 'green',
     year: '2026',
-    image: '/cert_datascience_r.jpg',
+    image: '/cert_datascience_r.webp',
     verify: 'https://www.eduonix.com/certificate/33d1298917',
     featured: true,
   },
@@ -21,7 +22,7 @@ const certs = [
     type: 'Online course',
     color: 'green',
     year: '2026',
-    image: '/cert_learning_r.jpg',
+    image: '/cert_learning_r.webp',
     verify: 'https://www.eduonix.com/certificate/643cf5714b',
     featured: true,
   },
@@ -31,7 +32,7 @@ const certs = [
     type: 'Participant',
     color: 'violet',
     year: '2026',
-    image: '/cert_young_innovators.jpg',
+    image: '/cert_young_innovators.webp',
     verify: null,
   },
   {
@@ -40,7 +41,7 @@ const certs = [
     type: 'Seminar',
     color: 'cyan',
     year: '2026',
-    image: '/cert_ethical_hacking.jpg',
+    image: '/cert_ethical_hacking.webp',
     verify: null,
   },
   {
@@ -49,7 +50,7 @@ const certs = [
     type: 'Participant',
     color: 'violet',
     year: '2026',
-    image: '/cert_deepdive.jpg',
+    image: '/cert_deepdive.webp',
     verify: null,
   },
   {
@@ -58,7 +59,7 @@ const certs = [
     type: 'Seminar',
     color: 'cyan',
     year: '2026',
-    image: '/cert_hello_world.jpg',
+    image: '/cert_hello_world.webp',
     verify: null,
   },
   {
@@ -67,7 +68,7 @@ const certs = [
     type: 'Masterclass',
     color: 'purple',
     year: '2025',
-    image: '/cert_masterclass_101.jpg',
+    image: '/cert_masterclass_101.webp',
     verify: null,
   },
   {
@@ -76,7 +77,7 @@ const certs = [
     type: 'Seminar',
     color: 'blue',
     year: '2025',
-    image: '/cert_eye_2025.jpg',
+    image: '/cert_eye_2025.webp',
     verify: null,
   },
 ]
@@ -84,6 +85,12 @@ const certs = [
 export default function Certifications() {
   const featured = certs.filter(c => c.featured)
   const others = certs.filter(c => !c.featured)
+  const [viewing, setViewing] = useState(null)
+  const close = useCallback(() => setViewing(null), [])
+  const open = (c) => (e) => {
+    e.preventDefault()
+    setViewing(c)
+  }
 
   return (
     <section id="certifications" className={styles.section}>
@@ -97,6 +104,7 @@ export default function Certifications() {
           <div key={c.title} className={cert.card}>
             <a
               href={c.image}
+              onClick={open(c)}
               className={cert.imageLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -127,6 +135,7 @@ export default function Certifications() {
           <div key={c.title} className={`${cert.card} ${cert.cardSmall}`}>
             <a
               href={c.image}
+              onClick={open(c)}
               className={cert.imageLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -144,6 +153,8 @@ export default function Certifications() {
           </div>
         ))}
       </div>
+
+      <Lightbox image={viewing?.image} title={viewing?.title} onClose={close} />
     </section>
   )
 }
