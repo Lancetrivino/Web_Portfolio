@@ -5,11 +5,11 @@ import proj from './Projects.module.css'
 const projects = [
   {
     featured: true,
-    title: 'Alagad Carwash Inventory',
+    title: 'Alagad Carwash — Booking Website & Staff App',
     image: '/carwash_inventory.webp',
-    desc: 'A full-featured inventory management system for Alagad Carwash & Auto Detailing. Includes authentication, product tracking, and business operations management.',
-    stack: ['React', 'Firebase', 'Tailwind CSS'],
-    live: 'https://alagad-carwash-inventory.vercel.app/',
+    desc: 'A customer website and staff app for Alagad Carwash & Auto Detailing, in daily use at the shop. Customers see prices by vehicle size, book a wash online, and track a plate-based loyalty card. Staff log washes, confirm bookings, close the cash drawer, and manage stock, with owner and staff roles enforced by database security rules. Installable as a PWA.',
+    stack: ['Next.js', 'React', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'PWA'],
+    live: 'https://alagad-carwash.vercel.app/',
     code: 'https://github.com/Lancetrivino/Alagad-carwash-inventory',
   },
   {
